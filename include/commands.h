@@ -7,12 +7,13 @@
 typedef struct
 {
     char *name;
-    _Bool (*func)(database_buffer *);
+    _Bool (*func)(database_buffer *, size_t);
+    size_t len;
 } database_command;
 
-_Bool database_exit(database_buffer *buffer);
-_Bool database_insert(database_buffer *buffer);
-_Bool database_select(database_buffer *buffer);
+_Bool database_exit(database_buffer *buffer, size_t len);
+_Bool database_insert(database_buffer *buffer, size_t len);
+_Bool database_select(database_buffer *buffer, size_t len);
 
 extern database_command COMMANDS[];
 

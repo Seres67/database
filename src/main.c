@@ -30,10 +30,9 @@ int main(int ac, char **av)
         read_input(buffer);
 
         for (int i = 0; COMMANDS[i].name; ++i) {
-            if (!strncmp(buffer->buffer, COMMANDS[i].name,
-                         strlen(COMMANDS[i].name))) {
+            if (!strncmp(buffer->buffer, COMMANDS[i].name, COMMANDS[i].len)) {
                 found = 1;
-                if (COMMANDS[i].func(buffer)) {
+                if (COMMANDS[i].func(buffer, COMMANDS[i].len)) {
                     return 0;
                 }
             }
